@@ -1,0 +1,222 @@
+<apex:page controller="QuoteDownloadPdfController" renderAs="pdf" sidebar="false" showHeader="false" applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false">
+    <html>
+    <head>
+        <style type="text/css">
+            @page {
+                margin: 0.5in;
+                size: letter;
+                @bottom-right {
+                    content: "Page " counter(page) " of " counter(pages);
+                    font-size: 10px;
+                    color: #6b7280;
+                }
+            }
+            body {
+                font-family: Arial, sans-serif;
+                font-size: 12px;
+                color: #1f2937;
+                line-height: 1.4;
+            }
+            .header-table {
+                width: 100%;
+                margin-bottom: 24px;
+            }
+            .org-info {
+                width: 60%;
+            }
+            .quote-info {
+                width: 40%;
+                text-align: right;
+            }
+            .org-name {
+                font-size: 18px;
+                font-weight: bold;
+                color: #111827;
+                margin-bottom: 4px;
+            }
+            .org-details {
+                font-size: 11px;
+                color: #6b7280;
+            }
+            .quote-title {
+                font-size: 32px;
+                color: #1d4ed8;
+                font-weight: bold;
+                margin-bottom: 8px;
+            }
+            .quote-detail {
+                font-size: 11px;
+                color: #374151;
+            }
+            .section-title {
+                font-size: 14px;
+                font-weight: bold;
+                color: #111827;
+                margin: 20px 0 8px;
+                border-bottom: 1px solid #e5e7eb;
+                padding-bottom: 4px;
+            }
+            .table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 16px;
+                font-size: 11px;
+            }
+            .table th {
+                background-color: #f3f4f6;
+                color: #4b5563;
+                text-align: left;
+                padding: 8px;
+                border-bottom: 1px solid #e5e7eb;
+            }
+            .table td {
+                padding: 8px;
+                border-bottom: 1px solid #f3f4f6;
+                vertical-align: top;
+            }
+            .phase-row {
+                background-color: #f9fafb;
+                font-weight: bold;
+                color: #1d4ed8;
+            }
+            .total-section {
+                width: 100%;
+                margin-top: 24px;
+            }
+            .total-table {
+                width: 300px;
+                float: right;
+                border-collapse: collapse;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .grand-total {
+                background-color: #1d4ed8;
+                color: white;
+                font-weight: bold;
+                padding: 12px;
+                font-size: 14px;
+            }
+            .sub-total {
+                background-color: #f9fafb;
+                border: 1px solid #e5e7eb;
+                padding: 10px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <table class="header-table">
+            <tr>
+                <td class="org-info">
+                    <div class="org-name">{!orgInfo.Company_Name__c}</div>
+                    <div class="org-details">
+                        {!orgInfo.Address__c}<br/>
+                        {!orgInfo.City__c}, {!orgInfo.State__c} {!orgInfo.Zip_Code__c}<br/>
+                        {!orgInfo.Country__c}<br/>
+                        <apex:outputText value="{!orgInfo.Email__c}" rendered="{!NOT(ISBLANK(orgInfo.Email__c))}"/>
+                        <apex:outputText value=" • {!orgInfo.Phone__c}" rendered="{!NOT(ISBLANK(orgInfo.Phone__c))}"/>
+                    </div>
+                </td>
+                <td class="quote-info">
+                    <div class="quote-title">QUOTE</div>
+                    <div class="quote-detail">
+                        Quote #: {!quote.QuoteNumber}<br/>
+                        Date: {!quoteDate}<br/>
+                        Valid Until: {!validUntil}<br/>
+                        Prepared By: {!quote.CreatedBy.Name}
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div style="background-color: #f9fafb; padding: 12px; border-radius: 6px; margin-bottom: 24px;">
+            <div style="font-weight: bold; font-size: 11px; margin-bottom: 4px;">BILL TO</div>
+            <div style="font-size: 13px;">{!quote.Account.Name}</div>
+        </div>
+
+        <div class="section-title">PROJECT OVERVIEW</div>
+        <div style="font-size: 11px; color: #6b7280; font-weight: bold; margin-bottom: 4px;">DESCRIPTION</div>
+        <div style="margin-bottom: 24px;">{!quote.Description}</div>
+
+        <div class="section-title">DETAILED PRICE BREAKDOWN</div>
+
+        <apex:repeat value="{!phases}" var="pw">
+            <div style="font-weight: bold; color: #1d4ed8; margin: 12px 0 6px;">Phase: {!pw.title}</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 40%">Item</th>
+                        <th style="width: 15%">Type</th>
+                        <th style="width: 15%; text-align: center;">Qty</th>
+                        <th style="width: 15%; text-align: right;">Price</th>
+                        <th style="width: 15%; text-align: right;">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <apex:repeat value="{!pw.items}" var="iw">
+                        <tr>
+                            <td>
+                                <strong>{!iw.name}</strong><br/>
+                                <span style="font-size: 9px; color: #6b7280;">{!iw.startDate} – {!iw.endDate}</span>
+                            </td>
+                            <td>{!iw.type}</td>
+                            <td style="text-align: center;">{!iw.quantity} {!iw.billingUnit}</td>
+                            <td style="text-align: right;">
+                                <apex:outputText value="${0, number, ###,###,##0.00}">
+                                    <apex:param value="{!iw.unitPrice}"/>
+                                </apex:outputText>
+                            </td>
+                            <td style="text-align: right;">
+                                <apex:outputText value="${0, number, ###,###,##0.00}">
+                                    <apex:param value="{!iw.totalPrice}"/>
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                    </apex:repeat>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" style="text-align: right; border-top: 1px solid #e5e7eb; font-weight: bold;">Phase Total</td>
+                        <td style="text-align: right; border-top: 1px solid #e5e7eb; font-weight: bold;">
+                            <apex:outputText value="${0, number, ###,###,##0.00}">
+                                <apex:param value="{!pw.total}"/>
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </apex:repeat>
+
+        <div class="total-section">
+            <table class="total-table" align="right">
+                <tr>
+                    <td class="sub-total" style="width: 55%;">Gross Subtotal</td>
+                    <td class="sub-total" style="text-align: right;">
+                        <apex:outputText value="{0, number, $###,###,##0.00}">
+                            <apex:param value="{!quote.Subtotal_Amount__c}"/>
+                        </apex:outputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sub-total">Discount ({!quote.Calculated_Discount__c}%)</td>
+                    <td class="sub-total" style="text-align: right; color: #991b1b;">
+                        <apex:outputText value="- {0, number, $###,###,##0.00}">
+                            <apex:param value="{!quote.Subtotal_Amount__c - quote.Total_Amount__c}"/>
+                        </apex:outputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="grand-total">Final Quote Total</td>
+                    <td class="grand-total" style="text-align: right;">
+                        <apex:outputText value="{0, number, $###,###,##0.00}">
+                            <apex:param value="{!quote.Total_Amount__c}"/>
+                        </apex:outputText>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </body>
+    </html>
+</apex:page>
