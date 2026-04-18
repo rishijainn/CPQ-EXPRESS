@@ -1,0 +1,630 @@
+<template>
+    <div class="settings-container">
+
+        <div class="settings-header">
+            <div class="header-left">
+                <h1 class="page-title">Settings</h1>
+                <p class="page-subtitle">
+                    Manage your application preferences
+                    and organization settings
+                </p>
+            </div>
+            <div class="header-right">
+                <button class="btn-icon">
+                    ✨ AI Assistant
+                </button>
+            </div>
+        </div>
+
+        <div class="settings-body">
+
+            <!-- LEFT NAV -->
+            <div class="settings-nav">
+                <div class={generalNavClass}
+                     data-tab="general"
+                     onclick={handleNavClick}>
+                    ⚙️ General
+                </div>
+                <div class={companyNavClass}
+                     data-tab="company"
+                     onclick={handleNavClick}>
+                    🏢 Company Info
+                </div>
+                <div class={usersNavClass}
+                     data-tab="users"
+                     onclick={handleNavClick}>
+                    👥 Users
+                </div>
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div class="settings-content">
+
+                <!-- GENERAL tab -->
+                <template if:true={showGeneral}>
+                    <div class="general-section">
+                        <div class="section-header-simple">
+                            <span class="section-icon-large">🕒</span>
+                            <div>
+                                <h2 class="section-title">Billing Time Defaults</h2>
+                                <p class="section-subtitle">Standard time units used for planning and calculations</p>
+                            </div>
+                        </div>
+
+                        <div class="billing-table-card">
+                            <table class="billing-table">
+                                <thead>
+                                    <tr>
+                                        <th>Period</th>
+                                        <th>Days</th>
+                                        <th>Calculation</th>
+                                        <th class="txt-blue">Total Hours</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>1 Week</strong></td>
+                                        <td>5 days</td>
+                                        <td>5 × 8</td>
+                                        <td class="txt-blue"><strong>40 hours</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>1 Month</strong></td>
+                                        <td>20 days</td>
+                                        <td>20 × 8</td>
+                                        <td class="txt-blue"><strong>160 hours</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>1 Quarter</strong></td>
+                                        <td>60 days</td>
+                                        <td>60 × 8</td>
+                                        <td class="txt-blue"><strong>480 hours</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="example-card">
+                            <p class="example-label">Example Line Item:</p>
+                            <h3 class="example-title">Fullstack Developer @ $50/hr</h3>
+                            <p class="example-desc">Full-stack development with React & Node.js</p>
+                            
+                            <div class="example-grid">
+                                <div class="example-col">
+                                    <p class="ex-meta-label">Time Estimate</p>
+                                    <p class="ex-meta-val">20 days work</p>
+                                    <p class="ex-meta-val">160 hours total</p>
+                                    <p class="ex-meta-val">4 weeks duration</p>
+                                </div>
+                                <div class="example-col">
+                                    <p class="ex-meta-label">Calculation</p>
+                                    <p class="ex-meta-val">20 × 8 = 160h</p>
+                                    <p class="ex-meta-val">$50/h × 160h</p>
+                                    <p class="ex-total">$8,000 total</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="section-footer-note">
+                            These values are used throughout the application for time-based calculations. Configuration options will be available in future updates.
+                        </p>
+                    </div>
+                </template>
+
+                <!-- COMPANY INFO tab -->
+                <template if:true={showCompany}>
+                    <div class="company-section">
+
+                        <div class="section-header">
+                            <div class="section-header-left">
+                                <div class="section-icon">
+                                    🏢
+                                </div>
+                                <div>
+                                    <h2 class="section-title">
+                                        Company Information
+                                    </h2>
+                                    <p class="section-subtitle">
+                                        Configure your company
+                                        details that appear
+                                        on PDF quotes
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form -->
+                        <div class="company-form">
+
+                            <!-- Row 1 -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        Company Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        class="form-input"
+                                        placeholder="Your company name"
+                                        value={orgSettings.Company_Name__c}
+                                        data-field="Company_Name__c"
+                                        onchange={handleOrgFieldChange} />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        Email
+                                    </label>
+                                    <input
+                                        type="email"
+                                        class="form-input"
+                                        placeholder="company@email.com"
+                                        value={orgSettings.Email__c}
+                                        data-field="Email__c"
+                                        onchange={handleOrgFieldChange} />
+                                </div>
+                            </div>
+
+                            <!-- Row 2 -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        Phone
+                                    </label>
+                                    <input
+                                        type="text"
+                                        class="form-input"
+                                        placeholder="+1 234 567 8900"
+                                        value={orgSettings.Phone__c}
+                                        data-field="Phone__c"
+                                        onchange={handleOrgFieldChange} />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        Website
+                                    </label>
+                                    <input
+                                        type="text"
+                                        class="form-input"
+                                        placeholder="www.yourcompany.com"
+                                        value={orgSettings.Website__c}
+                                        data-field="Website__c"
+                                        onchange={handleOrgFieldChange} />
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <div class="form-group full-width">
+                                <label class="form-label">
+                                    Address
+                                </label>
+                                <input
+                                    type="text"
+                                    class="form-input"
+                                    placeholder="123 Business Street"
+                                    value={orgSettings.Address__c}
+                                    data-field="Address__c"
+                                    onchange={handleOrgFieldChange} />
+                            </div>
+
+                            <!-- Row 3 -->
+                            <div class="form-row four-col">
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        City
+                                    </label>
+                                    <input
+                                        type="text"
+                                        class="form-input"
+                                        placeholder="City"
+                                        value={orgSettings.City__c}
+                                        data-field="City__c"
+                                        onchange={handleOrgFieldChange} />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        State
+                                    </label>
+                                    <input
+                                        type="text"
+                                        class="form-input"
+                                        placeholder="State"
+                                        value={orgSettings.State__c}
+                                        data-field="State__c"
+                                        onchange={handleOrgFieldChange} />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        Zip Code
+                                    </label>
+                                    <input
+                                        type="text"
+                                        class="form-input"
+                                        placeholder="12345"
+                                        value={orgSettings.Zip_Code__c}
+                                        data-field="Zip_Code__c"
+                                        onchange={handleOrgFieldChange} />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        Country
+                                    </label>
+                                    <input
+                                        type="text"
+                                        class="form-input"
+                                        placeholder="US"
+                                        value={orgSettings.Country__c}
+                                        data-field="Country__c"
+                                        onchange={handleOrgFieldChange} />
+                                </div>
+                            </div>
+
+                            <!-- Brand Logo -->
+                            <!-- <div class="form-group full-width">
+                                <label class="form-label">
+                                    Brand Logo
+                                </label>
+                                <p class="field-hint">
+                                    Choose how your logo appears
+                                    in generated PDFs.
+                                </p>
+                                <div class="logo-upload-row">
+                                    <div class="logo-upload-box">
+                                        <span class="upload-icon">
+                                            🖼️
+                                        </span>
+                                        <p class="upload-text">
+                                            PNG or JPEG up to 2 MB
+                                        </p>
+                                        <button
+                                            class="btn-upload"
+                                            onclick={handleLogoUpload}>
+                                            ⬆ Upload logo
+                                        </button>
+                                        <p class="upload-hint">
+                                            Allowed formats: PNG,
+                                            JPG, JPEG.
+                                            Maximum file size: 2 MB.
+                                        </p>
+                                    </div>
+                                    <div class="logo-preview">
+                                        <p class="preview-label">
+                                            Logo preview
+                                        </p>
+                                        <template if:true={logoUrl}>
+                                            <img
+                                                src={logoUrl}
+                                                class="logo-img"
+                                                alt="Company Logo" />
+                                        </template>
+                                        <template if:false={logoUrl}>
+                                            <div class="logo-placeholder">
+                                                🏢
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <!-- Error/Success messages -->
+                            <template if:true={orgError}>
+                                <div class="error-msg">
+                                    {orgError}
+                                </div>
+                            </template>
+                            <template if:true={orgSuccess}>
+                                <div class="success-msg">
+                                    ✅ {orgSuccess}
+                                </div>
+                            </template>
+
+                            <!-- Save button -->
+                            <div class="form-actions">
+                                <button
+                                    class="btn-save-org"
+                                    onclick={handleSaveOrg}
+                                    disabled={isSavingOrg}>
+                                    <template if:true={isSavingOrg}>
+                                        Saving...
+                                    </template>
+                                    <template if:false={isSavingOrg}>
+                                        Save Changes
+                                    </template>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </template>
+
+                <!-- PDF tab stub -->
+                <template if:true={showPdf}>
+                    <div class="stub-tab">
+                        <h2>PDF Settings</h2>
+                        <p>Configure PDF templates 
+                           — coming soon.</p>
+                    </div>
+                </template>
+
+                <!-- INTEGRATIONS stub -->
+                <template if:true={showIntegrations}>
+                    <div class="stub-tab">
+                        <h2>Integrations</h2>
+                        <p>Coming soon.</p>
+                    </div>
+                </template>
+
+                <!-- USERS tab -->
+                <template if:true={showUsers}>
+                    <!-- paste your existing users tab HTML here -->
+                    <div class="users-section">
+                        <div class="section-header">
+                            <div class="section-header-left">
+                                <div class="section-icon">
+                                    👥
+                                </div>
+                                <div>
+                                    <h2 class="section-title">
+                                        Manage Your Team
+                                    </h2>
+                                    <p class="section-subtitle">
+                                        Manage user access,
+                                        roles, and permissions.
+                                    </p>
+                                </div>
+                            </div>
+                            <button
+                                class="btn-add-member"
+                                onclick={handleAddMember}>
+                                + Team Member
+                            </button>
+                        </div>
+
+                        <div class="seat-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">
+                                    {totalSeats}
+                                </div>
+                                <div class="stat-label">
+                                    TOTAL SEATS
+                                </div>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <div class="stat-number">
+                                    {usedSeats}
+                                </div>
+                                <div class="stat-label">
+                                    USED SEATS
+                                </div>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <div class="stat-number">
+                                    {availableSeats}
+                                </div>
+                                <div class="stat-label">
+                                    AVAILABLE
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="users-table-container">
+                            <table class="users-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                        <th>Last Active</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template if:true={isLoading}>
+                                        <tr>
+                                            <td colspan="6"
+                                                class="loading-cell">
+                                                Loading...
+                                            </td>
+                                        </tr>
+                                    </template>
+                                    <template if:false={isLoading}>
+                                        <template
+                                            for:each={userRows}
+                                            for:item="user">
+                                            <tr key={user.Id}
+                                                class="user-row">
+                                                <td>
+                                                    <div class="user-name-cell">
+                                                        <div
+                                                            class={user.avatarClass}
+                                                            style={user.avatarStyle}>
+                                                            {user.initials}
+                                                        </div>
+                                                        <span class="user-name">
+                                                            {user.Name}
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td class="email-cell">
+                                                    {user.Email}
+                                                </td>
+                                                <td>
+                                                    <span class={user.roleBadgeClass}>
+                                                        {user.roleDisplay}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div class="status-cell">
+                                                        <span class="status-dot"></span>
+                                                        Active
+                                                    </div>
+                                                </td>
+                                                <td class="last-active">
+                                                    {user.lastActiveDisplay}
+                                                </td>
+                                                <td>
+                                                    <button
+                                                        class="action-btn"
+                                                        title="Delete"
+                                                        data-id={user.Id}
+                                                        onclick={handleUserAction}>
+                                                        🗑️
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CREATE TEAM MEMBER MODAL -->
+    <template if:true={showModal}>
+        <div class="modal-overlay"
+             onclick={handleModalClose}></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">
+                        Create Team Member
+                    </h2>
+                    <p class="modal-subtitle">
+                        Add a team member and select
+                        a role before submitting.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">
+                        First Name <span class="req">*</span>
+                    </label>
+                    <input type="text"
+                           class="form-input"
+                           placeholder="Enter first name"
+                           onchange={handleFieldChange}
+                           data-field="firstName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                        Last Name <span class="req">*</span>
+                    </label>
+                    <input type="text"
+                           class="form-input"
+                           placeholder="Enter last name"
+                           onchange={handleFieldChange}
+                           data-field="lastName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                        Email <span class="req">*</span>
+                    </label>
+                    <input type="email"
+                           class="form-input"
+                           placeholder="Enter email"
+                           onchange={handleEmailChange}
+                           data-field="email" />
+                    <p class="field-hint">
+                        Email used as default username.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                        Username <span class="req">*</span>
+                    </label>
+                    <input type="text"
+                           class="form-input"
+                           placeholder="username@email.com"
+                           value={formData.username}
+                           onchange={handleFieldChange}
+                           data-field="username" />
+                    <p class="field-hint">
+                        Must be unique email format.
+                    </p>
+                </div>
+                <template if:true={showRoleSelection}>
+                    <div class="form-group">
+                        <label class="form-label">
+                            Role <span class="req">*</span>
+                        </label>
+                        <div class={adminOptionClass}
+                             onclick={handleRoleSelect}
+                             data-role="Admin">
+                            <input type="radio" name="role"
+                                   value="Admin"
+                                   checked={isAdminSelected} />
+                            <div class="role-content">
+                                <div class="role-name">Admin</div>
+                                <div class="role-desc">
+                                    Full settings access and all
+                                    Manager/User capabilities.
+                                </div>
+                            </div>
+                        </div>
+                        <div class={managerOptionClass}
+                             onclick={handleRoleSelect}
+                             data-role="Manager">
+                            <input type="radio" name="role"
+                                   value="Manager"
+                                   checked={isManagerSelected} />
+                            <div class="role-content">
+                                <div class="role-name">Manager</div>
+                                <div class="role-desc">
+                                    Can approve/reject quotes
+                                    and manage team data.
+                                </div>
+                            </div>
+                        </div>
+                        <div class={userOptionClass}
+                             onclick={handleRoleSelect}
+                             data-role="User">
+                            <input type="radio" name="role"
+                                   value="User"
+                                   checked={isUserSelected} />
+                            <div class="role-content">
+                                <div class="role-name">User</div>
+                                <div class="role-desc">
+                                    Can edit own quotes, view
+                                    others read-only.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={errorMessage}>
+                    <div class="error-msg">{errorMessage}</div>
+                </template>
+                <template if:true={successMessage}>
+                    <div class="success-msg">
+                        ✅ {successMessage}
+                    </div>
+                </template>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel"
+                        onclick={handleModalClose}>
+                    Cancel
+                </button>
+                <button class="btn-create"
+                        onclick={handleCreate}
+                        disabled={isCreating}>
+                    <template if:true={isCreating}>
+                        Creating...
+                    </template>
+                    <template if:false={isCreating}>
+                        Create
+                    </template>
+                </button>
+            </div>
+        </div>
+    </template>
+
+</template>

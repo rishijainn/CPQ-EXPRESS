@@ -1,0 +1,133 @@
+<template>
+    <div class="dashboard-container">
+        <!-- HEADER -->
+        <div class="page-header">
+            <div class="greeting-row">
+                <span class="greeting-emoji">🌅</span>
+                <h1 class="greeting">Good morning, {currentUserName}!</h1>
+            </div>
+            <button class="btn-refresh" onclick={handleRefresh} title="Refresh Dashboard">
+                Refresh 🔄
+            </button>
+        </div>
+
+        <!-- AI COMMAND INTERFACE -->
+        <!-- <div class="ai-command-container">
+            <div class="ai-bar-inner">
+                <span class="ai-glow-icon">✨</span>
+                <input type="text" class="ai-input" 
+                       placeholder="Accelerate your deal flow. Ask AI anything about quotes or margin..." />
+                <button class="btn-generate">Analyze Deal →</button>
+            </div>
+        </div> -->
+
+        <!-- QUICK PLAYBOOKS -->
+        <div class="playbooks-row">
+            <span class="playbook-label">Quick Playbooks:</span>
+            <button class="playbook-btn" onclick={handleChipClick} data-action="createQuote">Create Quote</button>
+            <button class="playbook-btn" onclick={handleChipClick} data-action="showQuotes">View Pipeline</button>
+            <button class="playbook-btn" onclick={handleChipClick} data-action="listAccounts">Target Accounts</button>
+            <button class="playbook-btn" onclick={handleChipClick} data-action="showRoles">Resource Bench</button>
+        </div>
+
+        <!-- MAIN GRID -->
+        <div class="dashboard-grid">
+            
+            <!-- INSIGHTS -->
+            <div class="insights-panel">
+                <div class="section-header">
+                    <h2 class="section-title">Global Portfolio Insights</h2>
+                </div>
+                <div class="insight-cards-grid">
+                    
+                    <!-- Card 1: Draft Pipeline -->
+                    <div class="premium-card">
+                        <div class="card-accent-bar accent-blue"></div>
+                        <div class="card-meta">
+                            <div class="card-icon-wrap icon-blue">📋</div>
+                            <span class="card-info-icon">ⓘ</span>
+                        </div>
+                        <div class="card-value">{draftCount}</div>
+                        <div class="card-title">Draft Pipeline</div>
+                        <p class="card-description">{draftAmount} potential revenue in active negotiation.</p>
+                        <div class="progress-container"><div class="progress-fill fill-blue"></div></div>
+                        <button class="card-action" onclick={handleViewDrafts}>Optimize Funnel →</button>
+                    </div>
+
+                    <!-- Card 2: High Margin -->
+                    <div class="premium-card">
+                        <div class="card-accent-bar accent-cyan"></div>
+                        <div class="card-meta">
+                            <div class="card-icon-wrap icon-cyan">📈</div>
+                            <span class="card-info-icon">ⓘ</span>
+                        </div>
+                        <div class="card-value">{highMarginCount}</div>
+                        <div class="card-title">High Margin Focus</div>
+                        <p class="card-description">{highMarginAmount} volume with >35% profit margin.</p>
+                        <div class="progress-container"><div class="progress-fill fill-cyan"></div></div>
+                        <button class="card-action" onclick={handleViewHighMargin}>Analyze Profitability →</button>
+                    </div>
+
+                    <!-- Card 3: Closed Won -->
+                    <div class="premium-card">
+                        <div class="card-accent-bar accent-emerald"></div>
+                        <div class="card-meta">
+                            <div class="card-icon-wrap icon-emerald">🏆</div>
+                            <span class="card-info-icon">ⓘ</span>
+                        </div>
+                        <div class="card-value">{wonCount}</div>
+                        <div class="card-title">Closed Revenue</div>
+                        <p class="card-description">{wonAmount} recognized revenue this month.</p>
+                        <div class="progress-container"><div class="progress-fill fill-emerald"></div></div>
+                        <button class="card-action" onclick={handleViewWon}>View Win Reports →</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ACTIVITY FEED (Sidebar) -->
+            <div class="feed-section">
+                <div class="feed-header">
+                    <h3 class="feed-title">Activity Feed</h3>
+                    <div class="feed-subtitle">{totalQuoteCount} total quotes in portfolio</div>
+                </div>
+                
+                <button class="btn-create-large" onclick={handleCreateQuote}>
+                    + Draft New Quote
+                </button>
+
+                <div class="feed-items">
+                    <template if:true={hasRecentQuotes}>
+                        <template for:each={recentQuotes} for:item="quote">
+                             <div key={quote.Id} class="activity-item" data-id={quote.Id} onclick={handleRecentQuoteClick}>
+                                <div class="item-left">
+                                    <span class="item-q-num">{quote.QuoteNumber}</span>
+                                    <span class="item-account">{quote.accountName}</span>
+                                </div>
+                                <div class="item-right">
+                                    <span class="item-price">{quote.formattedAmount}</span>
+                                    <c-provus-status-badge status={quote.Status}></c-provus-status-badge>
+                                </div>
+                             </div>
+                        </template>
+                    </template>
+                    <template if:false={hasRecentQuotes}>
+                        <div class="feed-empty">
+                            <div class="empty-visual">🕳️</div>
+                            <p class="empty-text">No recent quote activity.</p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CREATE MODAL -->
+    <c-provus-create-quote-modal
+        is-open={showCreateModal}
+        onclose={handleModalClose}
+        onquotecreated={handleQuoteCreated}>
+    </c-provus-create-quote-modal>
+
+</template>

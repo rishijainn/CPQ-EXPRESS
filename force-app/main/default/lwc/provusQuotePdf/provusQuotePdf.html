@@ -1,0 +1,286 @@
+<template>
+    <template if:true={isOpen}>
+
+      
+        <div class="pdf-overlay">
+
+    
+            <div class="pdf-toolbar">
+                <div class="toolbar-left">
+                    <span class="page-count">
+                        2 pages
+                    </span>
+                    <button class="zoom-btn">−</button>
+                    <span class="zoom-level">150%</span>
+                    <button class="zoom-btn">+</button>
+                </div>
+                <div class="toolbar-right">
+                    <button class="btn-toolbar"
+                            onclick={handleAddNotes}>
+                        📝 Add notes
+                    </button>
+                    <button class="btn-save-pdf"
+                            onclick={handleDownload}>
+                        ⬇ Download PDF
+                    </button>
+                    <button class="btn-close"
+                            onclick={handleClose}>
+                        ✕
+                    </button>
+                </div>
+            </div>
+
+   
+            <div class="pdf-scroll-area">
+                <template if:true={isLoading}>
+                    <div class="pdf-loading">
+                        Loading quote data...
+                    </div>
+                </template>
+
+                <template if:false={isLoading}>
+                    <template if:true={pdfData}>
+
+      
+                        <div class="pdf-page" id="pdf-page-1">
+
+                   
+                            <div class="pdf-header">
+                                <div class="company-info">
+                                    <div class="company-name">
+                                        {orgInfo.companyName}
+                                    </div>
+                                    <div class="company-address">
+                                        {companyAddressLine}
+                                    </div>
+                                    <div class="company-address">
+                                        {orgInfo.country}
+                                    </div>
+                                    <div class="company-contact">
+                                        {orgInfo.email}
+                                        <template if:true={hasPhone}>
+                                            • {orgInfo.phone}
+                                        </template>
+                                    </div>
+                                    <div class="company-website">
+                                        {orgInfo.website}
+                                    </div>
+                                </div>
+
+                                <div class="quote-header-box">
+                                    <div class="quote-divider">
+                                    </div>
+                                    <div class="quote-meta">
+                                        <h1 class="quote-title">
+                                            QUOTE
+                                        </h1>
+                                        <div class="quote-meta-row">
+                                            Quote #: {pdfData.quoteNumber}
+                                        </div>
+                                        <div class="quote-meta-row">
+                                            Date: {pdfData.quoteDate}
+                                        </div>
+                                        <div class="quote-meta-row">
+                                            Valid Until: {pdfData.validUntil}
+                                        </div>
+                                        <div class="quote-meta-row">
+                                            Prepared By: {pdfData.createdBy}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                          
+                            <div class="section-divider"></div>
+
+        
+                            <div class="bill-to-box">
+                                <div class="bill-to-label">
+                                    Bill To
+                                </div>
+                                <div class="bill-to-value">
+                                    {pdfData.accountName}
+                                </div>
+                            </div>
+
+                    
+                            <div class="section-title">
+                                Project Overview
+                            </div>
+
+                            <div class="overview-section">
+                                <div class="overview-label">
+                                    DESCRIPTION
+                                </div>
+                                <div class="overview-value">
+                                    {pdfData.description}
+                                </div>
+                            </div>
+
+                      
+                            <div class="section-title">
+                                Detailed Price Breakdown
+                            </div>
+
+       
+                            <template for:each={pdfData.phases}
+                                      for:item="phase">
+                                <div key={phase.phaseName}>
+
+                                    <div class="phase-header">
+                                        Phase {phase.phaseNumber}:
+                                        {phase.phaseName}
+                                    </div>
+
+                                    <table class="items-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-item">
+                                                    Item
+                                                </th>
+                                                <th class="col-type">
+                                                    Type
+                                                </th>
+                                                <th class="col-qty">
+                                                    Quantity
+                                                </th>
+                                                <th class="col-price">
+                                                    Price
+                                                </th>
+                                                <th class="col-disc">
+                                                    Discount
+                                                </th>
+                                                <th class="col-sub">
+                                                    Subtotal
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <template
+                                                for:each={phase.items}
+                                                for:item="item">
+                                                <tr key={item.id}
+                                                    class="item-row">
+                                                    <td class="item-name-cell">
+                                                        <div class="item-name">
+                                                            {item.name}
+                                                        </div>
+                                                        <div class="item-dates">
+                                                            {item.startDate}
+                                                            <template if:true={item.endDate}>
+                                                                – {item.endDate}
+                                                            </template>
+                                                        </div>
+                                                    </td>
+                                                    <td>{item.type}</td>
+                                                    <td class="center">
+                                                        {item.quantity}
+                                                        {item.billingUnit}
+                                                    </td>
+                                                    <td class="right">
+                                                        {item.formattedPrice}
+                                                    </td>
+                                                    <td class="center">
+                                                        {item.discountDisplay}
+                                                    </td>
+                                                    <td class="right">
+                                                        {item.formattedTotal}
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="phase-total-row">
+                                                <td colspan="5"
+                                                    class="phase-total-label">
+                                                    Phase Total
+                                                </td>
+                                                <td class="phase-total-amt">
+                                                    {phase.formattedPhaseTotal}
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </template>
+
+                
+                            <div class="grand-total-section">
+                                <div class="subtotal-row">
+                                    <span>Gross Subtotal:</span>
+                                    <span>{formattedSubtotalAmount}</span>
+                                </div>
+                                <div class="subtotal-row">
+                                    <span>Total Discount:</span>
+                                    <span>- {formattedDiscountAmount} ({discountPercent}%)</span>
+                                </div>
+                                <div class="total-row">
+                                    <span>Final Quote Total:</span>
+                                    <span>{formattedGrandTotal}</span>
+                                </div>
+                            </div>
+
+                      
+                            <div class="section-title">
+                                Terms and Conditions
+                            </div>
+
+                            <div class="terms-grid">
+                                <div class="terms-col">
+                                    <div class="terms-heading">
+                                        1. Scope of Work
+                                    </div>
+                                    <div class="terms-text">
+                                        Work will be performed
+                                        according to specifications
+                                        outlined in this quote.
+                                    </div>
+                                </div>
+                                <div class="terms-col">
+                                    <div class="terms-heading">
+                                        2. Timeline and Delivery
+                                    </div>
+                                    <div class="terms-text">
+                                        Project timeline is estimated
+                                        based on current requirements.
+                                        Delays may occur due to
+                                        scope changes.
+                                    </div>
+                                </div>
+                                <div class="terms-col">
+                                    <div class="terms-heading">
+                                        3. Payment Terms
+                                    </div>
+                                    <div class="terms-text">
+                                        Payment is due within 30 days
+                                        of invoice receipt unless
+                                        otherwise agreed.
+                                    </div>
+                                </div>
+                                <div class="terms-col">
+                                    <div class="terms-heading">
+                                        4. Confidentiality
+                                    </div>
+                                    <div class="terms-text">
+                                        Both parties agree to maintain
+                                        confidentiality of all
+                                        proprietary information shared.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    
+
+                    </template>
+                </template>
+            </div>
+        </div>
+
+
+        <div id="printable-content"
+             class="print-only">
+        </div>
+
+    </template>
+</template>

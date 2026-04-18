@@ -1,0 +1,167 @@
+<template>
+    <div class="detail-container">
+
+        <!-- LOADING STATE -->
+        <template if:true={isLoading}>
+            <div class="loading">Loading quote details...</div>
+        </template>
+
+        <template if:false={isLoading}>
+            <template if:true={quote}>
+
+                <!-- HEADER SECTION -->
+                <div class="page-header-container">
+                    <div class="breadcrumb-row">
+                        <div class="breadcrumb-container">
+                            <span class="breadcrumb-home" onclick={handleBack}>Quotes</span>
+                            <span class="breadcrumb-sep">›</span>
+                            <span class="breadcrumb-current">{quote.QuoteNumber}</span>
+                        </div>
+                        <c-provus-status-badge status={quote.Status}></c-provus-status-badge>
+                    </div>
+
+                    <div class="name-row">
+                        <template if:false={isEditingName}>
+                            <h1 class="quote-name-display">{quote.Name}</h1>
+                            <template if:true={isDraft}>
+                                <button class="btn-icon-pencil" onclick={handleEditName} title="Edit Name">
+                                    <span class="pencil-icon">✎</span>
+                                </button>
+                            </template>
+                        </template>
+                        <template if:true={isEditingName}>
+                            <input
+                                type="text"
+                                class="name-inline-input"
+                                value={quote.Name}
+                                onchange={handleNameChange}
+                                onblur={handleNameSave}
+                                onkeydown={handleNameKeyDown}
+                                autofocus />
+                        </template>
+                    </div>
+
+                    <div class="action-bar-row">
+                        <div class="action-left">
+                            <template if:true={isDraft}>
+                                <button class="btn-brand" onclick={handleSubmit}>Submit for Approval</button>
+                            </template>
+                            <template if:true={isPending}>
+                                <template if:true={isManager}>
+                                    <button class="btn-success" onclick={handleApprove}>Approve</button>
+                                    <button class="btn-destructive" onclick={handleReject}>Reject</button>
+                                </template>
+                                <button class="btn-neutral" onclick={handleRecall}>Recall</button>
+                            </template>
+                            <button class="btn-brand-outline" onclick={handleGeneratePdf}>
+                                <span class="icon-save">⬇</span> Generate PDF
+                            </button>
+                            <!-- <template if:true={isDraft}>
+                                <button class="btn-brand" onclick={handleSave}>Save</button>
+                            </template> -->
+                            <button class="btn-neutral-icon" onclick={handleRefresh} title="Refresh">
+                                <span class="icon-refresh">🔄</span> Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- METRICS STRIP -->
+                <div class="metrics-strip">
+                    <div class="metric-item">
+                        <label>total amount</label>
+                        <div class="value">{formattedTotal}</div>
+                    </div>
+                    <div class="metric-item">
+                        <label>subtotal</label>
+                        <div class="value">{formattedSubtotal}</div>
+                    </div>
+                    <div class="metric-item">
+                        <label>margin</label>
+                        <div class="value">{formattedMargin}</div>
+                    </div>
+                    <div class="metric-item">
+                        <label>discount</label>
+                        <div class="value">{formattedDiscount}</div>
+                    </div>
+                    <div class="metric-item">
+                        <label>start date</label>
+                        <div class="value">{formattedStartDate}</div>
+                    </div>
+                    <div class="metric-item">
+                        <label>end date</label>
+                        <div class="value">{formattedEndDate}</div>
+                    </div>
+                    <div class="metric-item">
+                        <label>quote time period</label>
+                        <div class="value strong-val">{quote.Time_Period__c}</div>
+                    </div>
+                </div>
+
+                <!-- TABS -->
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button
+                            class={summaryTabClass}
+                            data-tab="summary"
+                            onclick={handleTabClick}>
+                            Summary
+                        </button>
+                        <button
+                            class={lineItemsTabClass}
+                            data-tab="lineItems"
+                            onclick={handleTabClick}>
+                            Line Items
+                        </button>
+                        <button
+                            class={timelineTabClass}
+                            data-tab="timeline"
+                            onclick={handleTabClick}>
+                            Timeline
+                        </button>
+                    </div>
+
+                    <!-- TAB CONTENT -->
+                    <div class="tab-content">
+
+                        <template if:true={showSummary}>
+                            <c-provus-quote-summary
+                                quote={quote}
+                                is-locked={isLocked}
+                                quote-id={quoteId}>
+                            </c-provus-quote-summary>
+                        </template>
+
+                        <template if:true={showLineItems}>
+                            <c-provus-quote-line-items
+                                quote-id={quoteId}
+                                quote-status={quote.Status}
+                                is-locked={isLocked}
+                                onlineitemsupdated={handleLineItemsUpdated}>
+                            </c-provus-quote-line-items>
+                        </template>
+                       
+                        <template if:true={showTimeline}>
+                            <c-provus-quote-timeline
+                                quote-id={quoteId}>
+                            </c-provus-quote-timeline>
+                        </template>
+
+                        <c-provus-quote-pdf
+                            is-open={showPdfModal}
+                            quote-id={quoteId}
+                            onclose={handlePdfClose}>
+                        </c-provus-quote-pdf>
+
+                    </div>
+                </div>
+
+            </template>
+        </template>
+
+        <template if:true={errorMessage}>
+            <div class="error-state">{errorMessage}</div>
+        </template>
+
+    </div>
+</template>

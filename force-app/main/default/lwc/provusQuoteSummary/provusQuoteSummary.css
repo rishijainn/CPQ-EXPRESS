@@ -1,0 +1,337 @@
+/* ── Quote Summary — Polished Professional ────────────────── */
+
+.summary-container {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background: transparent;
+}
+
+.loading {
+    padding: 4rem;
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+/* ── Metadata Card ────────────────────────────────────────── */
+.metadata-card {
+    background: #fff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem 2rem;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meta-label {
+    font-size: 0.6875rem;
+    color: #6b7280;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.meta-value {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+}
+
+.meta-editable {
+    color: #0176d3;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meta-editable:hover {
+    text-decoration: underline;
+}
+
+.edit-icon {
+    font-size: 0.75rem;
+}
+
+/* ── Main Layout ──────────────────────────────────────────── */
+.main-layout {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.main-content {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-width: 0;
+}
+
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-width: 18rem;
+}
+
+/* ── Revenue Cards ────────────────────────────────────────── */
+.revenue-cards-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* ── Charts ───────────────────────────────────────────────── */
+.charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.chart-card {
+    background: #fff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+
+.chart-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 2px;
+}
+
+.chart-subtitle {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin: 0 0 1.25rem;
+}
+
+.chart-wrapper {
+    display: flex;
+    gap: 0;
+}
+
+.y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 0.75rem;
+    padding-bottom: 1.5rem;
+}
+
+.y-label {
+    font-size: 0.6875rem;
+    color: #9ca3af;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.chart-area {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-end;
+    flex: 1;
+    height: 14rem;
+    border-bottom: 1px solid #e5e7eb;
+    border-left: 1px solid #e5e7eb;
+    padding: 0.75rem 1.25rem 0;
+}
+
+.bar-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bars-container {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    width: 100%;
+    justify-content: center;
+}
+
+.bar {
+    width: 28px;
+    border-radius: 4px 4px 0 0;
+    transition: opacity 0.2s;
+    min-height: 2px;
+}
+
+.bar:hover {
+    opacity: 0.8;
+}
+
+.bar-cost {
+    background: linear-gradient(180deg, #cbd5e1 0%, #e2e8f0 100%);
+}
+
+.bar-margin {
+    background: linear-gradient(180deg, #0176d3 0%, #38bdf8 100%);
+}
+
+.bar-label {
+    font-size: 0.6875rem;
+    color: #6b7280;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.chart-legend {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+    align-items: center;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot-cost { background: #cbd5e1; }
+.dot-margin { background: #0176d3; }
+
+/* ── Phase Table ──────────────────────────────────────────── */
+.phase-table-card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.phase-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.phase-table th {
+    padding: 0.75rem 1rem;
+    background: #f9fafb;
+    color: #6b7280;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.phase-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 0.8125rem;
+    color: #374151;
+}
+
+.phase-table tr:last-child td {
+    border-bottom: none;
+}
+
+.phase-table tr:hover td {
+    background: #f9fafb;
+}
+
+.phase-name {
+    font-weight: 600;
+    color: #111827;
+}
+
+.phase-amt {
+    font-variant-numeric: tabular-nums;
+}
+
+.phase-labor {
+    color: #0176d3;
+}
+
+.phase-product {
+    color: #7c3aed;
+}
+
+.phase-total {
+    font-weight: 700;
+    color: #111827;
+}
+
+.phase-items {
+    color: #6b7280;
+    text-align: center;
+}
+
+.phase-empty {
+    text-align: center;
+    padding: 2rem !important;
+    color: #9ca3af;
+    font-size: 0.8125rem;
+}
+
+/* ── Audit Card ───────────────────────────────────────────── */
+.audit-card {
+    background: #fff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+
+.audit-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 2px;
+}
+
+.audit-subtitle {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin: 0 0 1rem;
+}
+
+.audit-history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.75rem 0 0;
+    border-top: 1px solid #f3f4f6;
+    color: #0176d3;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    transition: color 0.15s;
+}
+
+.audit-history-header:hover {
+    color: #014486;
+}
+
+.audit-empty {
+    padding: 1rem 0;
+    font-size: 0.8125rem;
+    color: #9ca3af;
+    text-align: center;
+}

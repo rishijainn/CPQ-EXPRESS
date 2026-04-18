@@ -1,0 +1,109 @@
+<template>
+    <div class="timeline-scope">
+        
+        <!-- HEADER / LEGEND -->
+        <div class="timeline-controls">
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="dot dot-product"></span>
+                    <span>Product</span>
+                </div>
+                <div class="legend-item">
+                    <span class="dot dot-addon"></span>
+                    <span>Add-on</span>
+                </div>
+                <div class="legend-item">
+                    <span class="dot dot-resource"></span>
+                    <span>Resource Role</span>
+                </div>
+            </div>
+            <button class="btn-milestone">+ Add Milestone</button>
+        </div>
+
+        <template if:true={isLoading}>
+            <div class="loading">Loading timeline...</div>
+        </template>
+
+        <template if:false={isLoading}>
+            <!-- MAIN TIMELINE VIEW -->
+            <div class="timeline-main">
+                
+                <!-- STICKY SIDEBAR -->
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <span class="header-col-name">Issues</span>
+                        <span class="header-col-duration">Duration</span>
+                    </div>
+
+                    <div class="sidebar-body">
+                        <template for:each={groupedPhases} for:item="phase">
+                            <div key={phase.name} class="phase-section">
+                                <div class="phase-title">{phase.name}</div>
+                                <template for:each={phase.items} for:item="item">
+                                    <div key={item.Id} class="item-row">
+                                        <div class="item-info">
+                                            <span class="item-dot" style={item.dotStyle}></span>
+                                            <span class="item-name">{item.displayName}</span>
+                                        </div>
+                                        <span class="item-duration">{item.durationText}</span>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- SCROLLABLE CANVAS -->
+                <div class="canvas-wrapper">
+                    <div class="canvas-header">
+                        <!-- Years Header -->
+                        <div class="years-row">
+                            <template for:each={yearLabels} for:item="year">
+                                <div key={year.year} class="year-label" style={year.style}>
+                                    {year.year}
+                                </div>
+                            </template>
+                        </div>
+                        <!-- Months Header -->
+                        <div class="months-row">
+                            <template for:each={months} for:item="month">
+                                <div key={month.id} class="month-col-header">
+                                    {month.name}
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <div class="canvas-body" style={canvasBodyStyle}>
+                        <!-- Background Grid Lines -->
+                        <div class="grid-layer">
+                            <template for:each={months} for:item="month">
+                                <div key={month.id} class="grid-line"></div>
+                            </template>
+                        </div>
+
+                        <!-- Data Bars Layer -->
+                        <div class="bars-layer">
+                            <template for:each={groupedPhases} for:item="phase">
+                                <div key={phase.name} class="phase-spacer">
+                                    <!-- Spacer for phase title row -->
+                                    <div class="spacer-row"></div>
+                                    <template for:each={phase.items} for:item="item">
+                                        <div key={item.Id} class="bar-row">
+                                            <div class={item.barClass} style={item.barStyle}>
+                                                <span class={item.iconClass}></span>
+                                                <span class="bar-label">{item.displayName}</span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </template>
+
+    </div>
+</template>

@@ -1,0 +1,118 @@
+<template>
+    <div class="page-container">
+        <!-- HEADER -->
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Opportunities</h1>
+                <p class="page-subtitle">Manage your sales opportunities</p>
+            </div>
+            <div class="header-right">
+                <button class="btn-new" onclick={handleNew}>+ New Opportunity</button>
+            </div>
+        </div>
+
+        <div class="showing-count">
+            Showing {startRecord}-{endRecord} of {totalRecords}
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Opportunity Name</th>
+                        <th>Account</th>
+                        <th>Stage</th>
+                        <th>Close Date</th>
+                        <th>Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template if:true={isEmpty}>
+                        <tr>
+                            <td colspan="6" class="empty-cell">No opportunities found.</td>
+                        </tr>
+                    </template>
+                    <template for:each={paginatedOpportunities} for:item="opp">
+                        <tr key={opp.Id} class="table-row">
+                            <td>{opp.rowNumber}</td>
+                            <td><span class="name-link">{opp.Name}</span></td>
+                            <td>{opp.accountName}</td>
+                            <td><span class="stage-badge">{opp.StageName}</span></td>
+                            <td>{opp.formattedDate}</td>
+                            <td class="amount">{opp.formattedAmount}</td>
+                            <td>
+                                <button class="action-btn" data-id={opp.Id} onclick={handleDelete} title="Delete">🗑️</button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination">
+            <button class="page-btn" onclick={handlePrevPage} disabled={isFirstPage}>‹ Previous</button>
+            <span class="page-info">Page {currentPage} of {totalPages}</span>
+            <button class="page-btn" onclick={handleNextPage} disabled={isLastPage}>Next ›</button>
+        </div>
+    </div>
+
+    <!-- NEW OPPORTUNITY MODAL -->
+    <template if:true={showModal}>
+        <div class="modal-overlay" onclick={handleModalClose}></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2 class="modal-title">New Opportunity</h2>
+                <button class="close-btn" onclick={handleModalClose}>✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Name <span class="req">*</span></label>
+                    <input type="text" class="form-input" placeholder="Opportunity Name" onchange={handleFieldChange} data-field="name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Account <span class="req">*</span></label>
+                    <select class="form-select" onchange={handleFieldChange} data-field="accountId">
+                        <option value="">Select Account...</option>
+                        <template for:each={accountOptions} for:item="acc">
+                            <option key={acc.Id} value={acc.Id}>{acc.Name}</option>
+                        </template>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Stage <span class="req">*</span></label>
+                    <select class="form-select" onchange={handleFieldChange} data-field="stageName">
+                        <option value="Prospecting">Prospecting</option>
+                        <option value="Qualification">Qualification</option>
+                        <option value="Needs Analysis">Needs Analysis</option>
+                        <option value="Proposal/Price Quote">Proposal/Price Quote</option>
+                        <option value="Negotiation/Review">Negotiation/Review</option>
+                        <option value="Closed Won">Closed Won</option>
+                        <option value="Closed Lost">Closed Lost</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Close Date <span class="req">*</span></label>
+                    <input type="date" class="form-input" onchange={handleFieldChange} data-field="closeDate" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Amount</label>
+                    <input type="number" class="form-input" placeholder="0.00" onchange={handleFieldChange} data-field="amount" />
+                </div>
+                <template if:true={errorMessage}>
+                    <div class="error-msg">{errorMessage}</div>
+                </template>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick={handleModalClose}>Cancel</button>
+                <button class="btn-save" onclick={handleSave} disabled={isSaving}>
+                    <template if:true={isSaving}>Saving...</template>
+                    <template if:false={isSaving}>Save</template>
+                </button>
+            </div>
+        </div>
+    </template>
+</template>
