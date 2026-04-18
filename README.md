@@ -4,37 +4,40 @@ Provus Express Quoting is a streamlined, powerful Configure, Price, Quote (CPQ) 
 
 ## Key Features
 
-### 1. Resource Roles & Configuration
+### 1. Dashboard & Revenue Tracking
+Access high-level insights into your ongoing quotes, pipeline revenue, and cumulative margins from the main dashboard component.
+
+![Dashboard](./docs/images/Dashboard.png)
+
+### 2. Comprehensive Quoting Engine
+Manage your entire quoting lifecycle from a centralized interface.
+- **Quotes List:** Instantly view all drafted, pending, and approved quotes.
+- **Create Quote Dialog:** Quickly initiate new opportunities with integrated approval systems.
+- **Quote Detail Workspace:** An expansive workspace for adding line items, managing discounts, analyzing margin performance, and generating final PDFs.
+
+![Quotes List](./docs/images/quotePage.png)
+![Create Quote Dialog](./docs/images/craeteQuoteDialog.png)
+![Quote Detail Workspace](./docs/images/QuoteDetailPage.png)
+
+### 3. Timeline Planner & Phased Delivery
+Plot line items along a project timeline using a rich visual Gantt-style interface. This allows users to group scope into distinct phases and visualize the duration realistically before finalizing the quote.
+
+![Quote Timeline View](./docs/images/quote-timeline.png)
+
+### 4. Resource Roles Management
 Define billable roles (e.g., QA Lead, Full-stack Developer) along with custom **Cost** and **Price** rates. Manage regional pricing by location and assign standardized billing units (Hourly, Weekly, Monthly) to maintain precise margin calculations.
 
 ![Resource Roles Management](./docs/images/resource-roles.png)
 
-### 2. General Settings & Billing Logic
+### 5. Application & Core Settings
 Maintain absolute control over your environment's parameters:
-- **Billing Time Defaults:** Define standard work capacities (e.g., 1 Week = 40 hours, 1 Month = 160 hours). The engine uses these defaults to calculate extended service estimates dynamically.
-- **Organization Preferences:** Set universal metrics to ensure consistency applied across all project estimations.
-
-![Billing Time Defaults](./docs/images/settings-billing-defaults.png)
-
-### 3. Company Information & Branding
-Easily manage your organization's essential details—including Company Name, Contact Email, Web Address, and Location. This data natively integrates with the quoting engine to dynamically brand your outgoing PDF proposals.
+- **Company Information:** Easily manage your organization's essential details (Company Name, Email, Address). This data seamlessly integrates with the quoting engine to dynamically brand your outgoing PDF proposals.
+- **Billing Time Defaults:** Define standard work capacities (e.g., 1 Week = 40 hours, 1 Month = 160 hours). 
+- **User Management:** Distribute available seats and assign proper permission layers (Admin vs. Standard User).
 
 ![Company Information Preferences](./docs/images/settings-company-info.png)
-
-### 4. Team & User Management
-A centralized administration portal to oversee your sales team. 
-- Distribute available seats and assign proper permission layers (Admin vs. Standard User).
-- Track user activity and easily integrate new salespersons into the CPQ ecosystem.
-
-![User Team Management](./docs/images/settings-users.png)
-
-### 5. Intelligent Quoting Engine & Timeline Planner
-The core of the Provus Express Quoting application—an intuitive workspace for building opportunities:
-- **Financial Summary:** Instantly track Total Amount, Subtotal, cumulative Margins, and Discount percentages up top.
-- **Line Items & Services:** Add Products, Add-ons, and Resource Roles to the quote.
-- **Timeline View:** A rich visual Gantt-style interface that plots line items along a project timeline. It allows users to group scope into distinct phases and visualize duration realistically before finalizing the quote.
-
-![Quote Timeline View](./docs/images/quote-timeline.png)
+![Billing Time Defaults](./docs/images/settings-billing-defaults.png)
+![User Management](./docs/images/SettingUser.png)
 
 ## Architecture & Technologies
 
