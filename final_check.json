@@ -1,0 +1,665 @@
+{
+  "status": 1,
+  "result": {
+    "checkOnly": false,
+    "completedDate": "2026-04-07T12:57:15.000Z",
+    "createdBy": "005C2000007lPBp",
+    "createdByName": "User User",
+    "createdDate": "2026-04-07T12:57:05.000Z",
+    "details": {
+      "componentFailures": [
+        {
+          "changed": false,
+          "componentType": "AppMenu",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "appMenus/AppSwitcher.appMenu",
+          "fullName": "AppSwitcher",
+          "problem": "An unexpected error occurred. Please include this ErrorId if you contact support: 2089086705-82136 (11852308)",
+          "problemType": "Error",
+          "success": false
+        }
+      ],
+      "componentSuccesses": [
+        {
+          "changed": false,
+          "componentType": "ApexClass",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:12.000Z",
+          "deleted": false,
+          "fileName": "classes/QuoteController.cls",
+          "fullName": "QuoteController",
+          "id": "01pC2000001aftmIAA",
+          "success": true
+        },
+        {
+          "changed": false,
+          "componentType": "ApexClass",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:12.000Z",
+          "deleted": false,
+          "fileName": "classes/UserContextController.cls",
+          "fullName": "UserContextController",
+          "id": "01pC2000001aiV0IAI",
+          "success": true
+        },
+        {
+          "changed": false,
+          "componentType": "ApexClass",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:12.000Z",
+          "deleted": false,
+          "fileName": "classes/UserController.cls",
+          "fullName": "UserController",
+          "id": "01pC2000001aftpIAA",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "LightningComponentBundle",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "lwc/provusAccountsList",
+          "fullName": "provusAccountsList",
+          "id": "0RbC2000000GATFKA4",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "LightningComponentBundle",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "lwc/provusAddonsList",
+          "fullName": "provusAddonsList",
+          "id": "0RbC2000000GATHKA4",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "LightningComponentBundle",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "lwc/provusExpressApp",
+          "fullName": "provusExpressApp",
+          "id": "0RbC2000000GATLKA4",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "LightningComponentBundle",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "lwc/provusProductsList",
+          "fullName": "provusProductsList",
+          "id": "0RbC2000000GATMKA4",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "LightningComponentBundle",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "lwc/provusQuoteDetail",
+          "fullName": "provusQuoteDetail",
+          "id": "0RbC2000000GATNKA4",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "LightningComponentBundle",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "lwc/provusQuotesList",
+          "fullName": "provusQuotesList",
+          "id": "0RbC2000000GATQKA4",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "LightningComponentBundle",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "lwc/provusResourceRolesList",
+          "fullName": "provusResourceRolesList",
+          "id": "0RbC2000000GATRKA4",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "LightningComponentBundle",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "lwc/provusSidebar",
+          "fullName": "provusSidebar",
+          "id": "0RbC2000000GATUKA4",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "Layout",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "layouts/Add_On__c-Add On Layout.layout",
+          "fullName": "Add_On__c-Add On Layout",
+          "id": "00hC2000001Fzc6IAC",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "Layout",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "layouts/Product__c-Product Layout.layout",
+          "fullName": "Product__c-Product Layout",
+          "id": "00hC2000001Fzc7IAC",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "Layout",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "layouts/Quote-Quote Layout.layout",
+          "fullName": "Quote-Quote Layout",
+          "id": "00hC2000001G0enIAC",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "Layout",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "layouts/Quote_Line_Item__c-Quote Line Item Layout.layout",
+          "fullName": "Quote_Line_Item__c-Quote Line Item Layout",
+          "id": "00hC2000001Fzc8IAC",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "Layout",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "layouts/Resource_Role__c-Resource Role Layout.layout",
+          "fullName": "Resource_Role__c-Resource Role Layout",
+          "id": "00hC2000001Fzc9IAC",
+          "success": true
+        },
+        {
+          "changed": false,
+          "componentType": "FlexiPage",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "flexipages/Express_Home.flexipage",
+          "fullName": "Express_Home",
+          "id": "0M0C2000000O5HtKAK",
+          "success": true
+        },
+        {
+          "changed": false,
+          "componentType": "FlexiPage",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "flexipages/Provus_Express_Quoting_UtilityBar.flexipage",
+          "fullName": "Provus_Express_Quoting_UtilityBar",
+          "id": "0M0C2000000O5MjKAK",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "CustomTab",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "tabs/Express_Home.tab",
+          "fullName": "Express_Home",
+          "id": "01rC200000GotYLIAZ",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "CustomApplication",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "applications/Provus_Express_Quoting.app",
+          "fullName": "Provus_Express_Quoting",
+          "id": "02uC2000000b81pIAA",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "Profile",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "profiles/Admin.profile",
+          "fullName": "Admin",
+          "id": "00eC2000001DYmTIAW",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "PermissionSet",
+          "created": true,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "permissionsets/CPQ_Manager_Access.permissionset",
+          "fullName": "CPQ_Manager_Access",
+          "id": "0PSC2000000gfSgOAI",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "PermissionSet",
+          "created": true,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "permissionsets/CPQ_Salesperson_Access.permissionset",
+          "fullName": "CPQ_Salesperson_Access",
+          "id": "0PSC2000000gfShOAI",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "PermissionSet",
+          "created": true,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "permissionsets/Provus_CPQ_Base.permissionset",
+          "fullName": "Provus_CPQ_Base",
+          "id": "0PSC2000000gfSiOAI",
+          "success": true
+        },
+        {
+          "changed": false,
+          "componentType": "QuoteSettings",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "settings/Quote.settings",
+          "fullName": "Quote",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "",
+          "created": false,
+          "createdDate": "2026-04-07T12:57:15.000Z",
+          "deleted": false,
+          "fileName": "package.xml",
+          "fullName": "package.xml",
+          "success": true
+        }
+      ],
+      "runTestResult": {
+        "numFailures": 0,
+        "numTestsRun": 0,
+        "totalTime": 0,
+        "codeCoverage": [],
+        "codeCoverageWarnings": [],
+        "failures": [],
+        "flowCoverage": [],
+        "flowCoverageWarnings": [],
+        "successes": []
+      }
+    },
+    "done": true,
+    "id": "0AfC2000009yqeXKAQ",
+    "ignoreWarnings": false,
+    "lastModifiedDate": "2026-04-07T12:57:15.000Z",
+    "numberComponentErrors": 1,
+    "numberComponentsDeployed": 25,
+    "numberComponentsTotal": 26,
+    "numberFiles": "72",
+    "numberTestErrors": 0,
+    "numberTestsCompleted": 0,
+    "numberTestsTotal": 0,
+    "rollbackOnError": true,
+    "runTestsEnabled": false,
+    "startDate": "2026-04-07T12:57:08.000Z",
+    "status": "Failed",
+    "success": false,
+    "zipSize": 64118,
+    "files": [
+      {
+        "fullName": "QuoteController",
+        "type": "ApexClass",
+        "state": "Unchanged",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/classes/QuoteController.cls"
+      },
+      {
+        "fullName": "QuoteController",
+        "type": "ApexClass",
+        "state": "Unchanged",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/classes/QuoteController.cls-meta.xml"
+      },
+      {
+        "fullName": "UserContextController",
+        "type": "ApexClass",
+        "state": "Unchanged",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/classes/UserContextController.cls"
+      },
+      {
+        "fullName": "UserContextController",
+        "type": "ApexClass",
+        "state": "Unchanged",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/classes/UserContextController.cls-meta.xml"
+      },
+      {
+        "fullName": "UserController",
+        "type": "ApexClass",
+        "state": "Unchanged",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/classes/UserController.cls"
+      },
+      {
+        "fullName": "UserController",
+        "type": "ApexClass",
+        "state": "Unchanged",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/classes/UserController.cls-meta.xml"
+      },
+      {
+        "fullName": "AppSwitcher",
+        "type": "AppMenu",
+        "state": "Failed",
+        "problemType": "Error",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/appMenus/AppSwitcher.appMenu-meta.xml",
+        "error": "An unexpected error occurred. Please include this ErrorId if you contact support: 2089086705-82136 (11852308)"
+      },
+      {
+        "fullName": "Provus_Express_Quoting",
+        "type": "CustomApplication",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/applications/Provus_Express_Quoting.app-meta.xml"
+      },
+      {
+        "fullName": "Express_Home",
+        "type": "CustomTab",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/tabs/Express_Home.tab-meta.xml"
+      },
+      {
+        "fullName": "Express_Home",
+        "type": "FlexiPage",
+        "state": "Unchanged",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/flexipages/Express_Home.flexipage-meta.xml"
+      },
+      {
+        "fullName": "Provus_Express_Quoting_UtilityBar",
+        "type": "FlexiPage",
+        "state": "Unchanged",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/flexipages/Provus_Express_Quoting_UtilityBar.flexipage-meta.xml"
+      },
+      {
+        "fullName": "Add_On__c-Add On Layout",
+        "type": "Layout",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/layouts/Add_On__c-Add On Layout.layout-meta.xml"
+      },
+      {
+        "fullName": "Product__c-Product Layout",
+        "type": "Layout",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/layouts/Product__c-Product Layout.layout-meta.xml"
+      },
+      {
+        "fullName": "Quote-Quote Layout",
+        "type": "Layout",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/layouts/Quote-Quote Layout.layout-meta.xml"
+      },
+      {
+        "fullName": "Quote_Line_Item__c-Quote Line Item Layout",
+        "type": "Layout",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/layouts/Quote_Line_Item__c-Quote Line Item Layout.layout-meta.xml"
+      },
+      {
+        "fullName": "Resource_Role__c-Resource Role Layout",
+        "type": "Layout",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/layouts/Resource_Role__c-Resource Role Layout.layout-meta.xml"
+      },
+      {
+        "fullName": "provusAccountsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusAccountsList/provusAccountsList.css"
+      },
+      {
+        "fullName": "provusAccountsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusAccountsList/provusAccountsList.html"
+      },
+      {
+        "fullName": "provusAccountsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusAccountsList/provusAccountsList.js"
+      },
+      {
+        "fullName": "provusAccountsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusAccountsList/provusAccountsList.js-meta.xml"
+      },
+      {
+        "fullName": "provusAddonsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusAddonsList/provusAddonsList.css"
+      },
+      {
+        "fullName": "provusAddonsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusAddonsList/provusAddonsList.html"
+      },
+      {
+        "fullName": "provusAddonsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusAddonsList/provusAddonsList.js"
+      },
+      {
+        "fullName": "provusAddonsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusAddonsList/provusAddonsList.js-meta.xml"
+      },
+      {
+        "fullName": "provusExpressApp",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusExpressApp/provusExpressApp.css"
+      },
+      {
+        "fullName": "provusExpressApp",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusExpressApp/provusExpressApp.html"
+      },
+      {
+        "fullName": "provusExpressApp",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusExpressApp/provusExpressApp.js"
+      },
+      {
+        "fullName": "provusExpressApp",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusExpressApp/provusExpressApp.js-meta.xml"
+      },
+      {
+        "fullName": "provusProductsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusProductsList/provusProductsList.css"
+      },
+      {
+        "fullName": "provusProductsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusProductsList/provusProductsList.html"
+      },
+      {
+        "fullName": "provusProductsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusProductsList/provusProductsList.js"
+      },
+      {
+        "fullName": "provusProductsList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusProductsList/provusProductsList.js-meta.xml"
+      },
+      {
+        "fullName": "provusQuoteDetail",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusQuoteDetail/provusQuoteDetail.css"
+      },
+      {
+        "fullName": "provusQuoteDetail",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusQuoteDetail/provusQuoteDetail.html"
+      },
+      {
+        "fullName": "provusQuoteDetail",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusQuoteDetail/provusQuoteDetail.js"
+      },
+      {
+        "fullName": "provusQuoteDetail",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusQuoteDetail/provusQuoteDetail.js-meta.xml"
+      },
+      {
+        "fullName": "provusQuotesList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusQuotesList/provusQuotesList.css"
+      },
+      {
+        "fullName": "provusQuotesList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusQuotesList/provusQuotesList.html"
+      },
+      {
+        "fullName": "provusQuotesList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusQuotesList/provusQuotesList.js"
+      },
+      {
+        "fullName": "provusQuotesList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusQuotesList/provusQuotesList.js-meta.xml"
+      },
+      {
+        "fullName": "provusResourceRolesList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusResourceRolesList/provusResourceRolesList.css"
+      },
+      {
+        "fullName": "provusResourceRolesList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusResourceRolesList/provusResourceRolesList.html"
+      },
+      {
+        "fullName": "provusResourceRolesList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusResourceRolesList/provusResourceRolesList.js"
+      },
+      {
+        "fullName": "provusResourceRolesList",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusResourceRolesList/provusResourceRolesList.js-meta.xml"
+      },
+      {
+        "fullName": "provusSidebar",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusSidebar/provusSidebar.css"
+      },
+      {
+        "fullName": "provusSidebar",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusSidebar/provusSidebar.html"
+      },
+      {
+        "fullName": "provusSidebar",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusSidebar/provusSidebar.js"
+      },
+      {
+        "fullName": "provusSidebar",
+        "type": "LightningComponentBundle",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/lwc/provusSidebar/provusSidebar.js-meta.xml"
+      },
+      {
+        "fullName": "CPQ_Manager_Access",
+        "type": "PermissionSet",
+        "state": "Created",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/permissionsets/CPQ_Manager_Access.permissionset-meta.xml"
+      },
+      {
+        "fullName": "CPQ_Salesperson_Access",
+        "type": "PermissionSet",
+        "state": "Created",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/permissionsets/CPQ_Salesperson_Access.permissionset-meta.xml"
+      },
+      {
+        "fullName": "Provus_CPQ_Base",
+        "type": "PermissionSet",
+        "state": "Created",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/permissionsets/Provus_CPQ_Base.permissionset-meta.xml"
+      },
+      {
+        "fullName": "Admin",
+        "type": "Profile",
+        "state": "Changed",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/profiles/Admin.profile-meta.xml"
+      },
+      {
+        "fullName": "Quote",
+        "type": "Settings",
+        "state": "Unchanged",
+        "filePath": "/Users/rishijain/CPQ EXPRESS/force-app/main/default/settings/Quote.settings-meta.xml"
+      }
+    ],
+    "zipFileCount": 54,
+    "deployUrl": "https://agility-java-7865.scratch.my.salesforce.com/lightning/setup/DeployStatus/page?address=%2Fchangemgmt%2FmonitorDeploymentsDetails.apexp%3FasyncId%3D0AfC2000009yqeXKAQ%26retURL%3D%252Fchangemgmt%252FmonitorDeployment.apexp"
+  },
+  "warnings": []
+}

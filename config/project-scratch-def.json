@@ -1,0 +1,33 @@
+{
+    "orgName": "Provus CPQ Express — AI",
+  "edition": "Enterprise",
+  "features": [
+    "EnableSetPasswordInApi",
+    "Einstein1AIPlatform"
+  ],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    },
+    "userManagementSettings": {
+      "enableEnhancedPermsetMgmt": true
+    },
+    "einsteinSettings": {
+      "einsteinEnabled": true
+    },
+    "einsteinGptSettings": {
+      "enableEinsteinGptPlatform": true
+    },
+    "agentPlatformSettings": {
+      "enableAgentPlatform": true
+    },
+    "languageSettings": {
+      "language": "en_US"
+    }
+  },
+
+    "adminEmail": "jainrishirich2004@gmail.com"
+}
